@@ -119,7 +119,7 @@ $querysubmissions = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
 		INNER JOIN {facebook_user} AS fb ON (fb.moodleid = us.id AND fb.status = ?)
 		WHERE a.duedate > ?
 		AND fb.facebookid IS NOT NULL
-		AND status = ?
+		AND asub.status = ?
 		
 		GROUP BY us.id, a.id, c.id
 		ORDER BY us.id";
