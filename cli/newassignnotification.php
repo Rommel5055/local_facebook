@@ -147,6 +147,7 @@ $arraynewassignments = facebook_addtoarray($queryassignments, array_merge($param
 $arraysubmissions = facebook_addtoarray($querysubmissions, array_merge($paramsubmission, $paramsusers), $arraysubmissions);
 
 $notsubmitted = array();
+var_dump($arraynewassignments);
 foreach($arraynewassignments as $assignments){
 	var_dump($assignments);
 	if (!in_array($assignments->userassign, $arraysubmissions)){
