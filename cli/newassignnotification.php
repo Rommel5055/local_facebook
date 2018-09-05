@@ -48,6 +48,7 @@ if($unrecognized) {
 	$unrecognized = implode("\n  ", $unrecognized);
 	cli_error(get_string('cliunknowoption', 'admin', $unrecognized));
 }
+/*
 if($options['help']) {
 	$help =
 	"Send facebook notifications when a course have some news.
@@ -58,6 +59,7 @@ Example:
 	echo $help;
 	die();
 }
+*/
 
 
 cli_heading('Facebook notifications');
