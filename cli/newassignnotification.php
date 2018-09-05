@@ -165,6 +165,8 @@ foreach($notsubmitted as $user){
 }
 
 if ($facebookusers = $DB->get_records_sql($queryusers, $paramsusers)){
+	var_dump("");
+	var_dump($facebookusers);
 	foreach ($facebookusers as $users){
 		if (isset($countnotsubmittedusers[$users->id])){
 			if ($countnotsubmittedusers[$users->id] == 1){
