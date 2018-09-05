@@ -19,6 +19,10 @@
 *
 * @package    local/facebook/
 * @subpackage cli
+* @copyright  2010 Jorge Villalon (http://villalon.cl)
+* @copyright  2015 Mihail Pozarski (mipozarski@alumnos.uai.cl)
+* @copyright  2015 - 2016 Hans Jeria (hansjeria@gmail.com)
+* @copyright  2016 Mark Michaelsen (mmichaelsen678@gmail.com)
 * @copyright  2018 Javier Gonzalez (javiergonzalez@alumnos.uai.cl)
 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
