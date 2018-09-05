@@ -70,6 +70,8 @@ mtrace("Starting at ".date("F j, Y, G:i:s"));
 $initialtime = time();
 $notifications = 0;
 
+var_dump($initialtime);
+
 $appid = $CFG->fbk_appid;
 $secretid = $CFG->fbk_scrid;
 
@@ -87,6 +89,7 @@ $queryusers = "SELECT
 $queryassignments = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
 		us.id AS userid,
 		a.id AS assignid,
+		a.duedate AS duedate,
 		c.id AS courseid,
 		c.fullname AS coursename,
 		fb.facebookid,
@@ -107,6 +110,7 @@ $queryassignments = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
 $querysubmissions = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
 		us.id AS userid,
 		a.id AS assignid,
+		a.duedate AS duedate,
 		c.id AS courseid,
 		c.fullname AS coursename,
 		fb.facebookid,
@@ -165,8 +169,6 @@ foreach($notsubmitted as $user){
 }
 
 if ($facebookusers = $DB->get_records_sql($queryusers, $paramsusers)){
-	var_dump("");
-	var_dump($facebookusers);
 	foreach ($facebookusers as $users){
 		if (isset($countnotsubmittedusers[$users->id])){
 			if ($countnotsubmittedusers[$users->id] == 1){
