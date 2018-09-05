@@ -621,6 +621,18 @@ function facebook_addtoarray($query, $params){
 	}
 	return $arraydata;
 }
+
+function facebook_addtoarraysubmissions($query, $params){
+	global $DB;
+	$arraydata = array();
+	if ($facebookusers = $DB->get_records_sql($query, $params)){
+		foreach ($facebookusers as $users){
+			$arraydata[$users->userid] = $users;
+		}
+	}
+	return $arraydata;
+}
+
 function facebook_queriesfornotifications(){
 	global $DB;
 	

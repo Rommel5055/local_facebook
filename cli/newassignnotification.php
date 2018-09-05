@@ -143,8 +143,8 @@ $paramsubmission = array(
 
 $arraynewassignments = array();
 $arraysubmissions = array();
-$arraynewassignments = facebook_addtoarray($queryassignments, array_merge($paramsassignment, $paramsusers), $arraynewassignments);
-$arraysubmissions = facebook_addtoarray($querysubmissions, array_merge($paramsubmission, $paramsusers), $arraysubmissions);
+$arraynewassignments = facebook_addtoarraysubmissions($queryassignments, array_merge($paramsassignment, $paramsusers), $arraynewassignments);
+$arraysubmissions = facebook_addtoarraysubmissions($querysubmissions, array_merge($paramsubmission, $paramsusers), $arraysubmissions);
 
 $notsubmitted = array();
 var_dump($arraynewassignments);
