@@ -152,7 +152,7 @@ foreach($arraynewassignments as $assignments){
 		$notsubmitted[] = $assignments;
 	}
 }
-
+ 
 $countnotsubmittedusers = array();
 foreach($notsubmitted as $user){
 	if (isset($countnotsubmittedusers[$user->userid])){
