@@ -175,16 +175,18 @@ if ($facebookusers = $DB->get_records_sql($queryusers, $paramsusers)){
 			}
 		}
 		
-		if ($users->facebookid != null && $countnotsubmittedusers[$users->id] > 0) {
-			$data = array(
-					"link" => "",
-					"message" => "",
-					"template" => $template
-			);
-			$fb->setDefaultAccessToken($appid.'|'.$secretid);
-			if (facebook_handleexceptions($fb, $users, $data)){
-				mtrace(" Notifications sent to user with moodleid ".$users->id." - ".$users->name);
-				$notifications = $notifications + 1;
+		if ($users->facebookid != null && isset($countnotsubmittedusers[$users->id])) {
+			if($countnotsubmittedusers[$users->id] > 0){
+				$data = array(
+						"link" => "",
+						"message" => "",
+						"template" => $template
+				);
+				$fb->setDefaultAccessToken($appid.'|'.$secretid);
+				if (facebook_handleexceptions($fb, $users, $data)){
+					mtrace(" Notifications sent to user with moodleid ".$users->id." - ".$users->name);
+					$notifications = $notifications + 1;
+				}
 			}
 		}
 	}
