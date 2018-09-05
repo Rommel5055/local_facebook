@@ -125,6 +125,7 @@ $querysubmissions = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
 		INNER JOIN {facebook_user} AS fb ON (fb.moodleid = us.id AND fb.status = ?)
 		WHERE a.duedate > ?
 		AND fb.facebookid IS NOT NULL
+		AND asub.status = ?
 		
 		GROUP BY us.id, a.id, c.id
 		ORDER BY us.id";
@@ -140,7 +141,8 @@ $paramsassignment = array(
 $paramsubmission = array(
 		MODULE_ASSIGN,
 		FACEBOOK_COURSE_MODULE_VISIBLE,
-		$initialtime
+		$initialtime,
+		"submitted"
 );
 
 $arraynewassignments = array();
