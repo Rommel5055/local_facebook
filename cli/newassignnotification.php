@@ -148,6 +148,7 @@ $arraysubmissions = facebook_addtoarray($querysubmissions, array_merge($paramsub
 
 $notsubmitted = array();
 foreach($arraynewassignments as $assignments){
+	var_dump($assignments);
 	if (!in_array($assignments->userassign, $arraysubmissions)){
 		$notsubmitted[$assignments->userassign] = $assignments;
 	}
