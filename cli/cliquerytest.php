@@ -68,3 +68,56 @@ $secretid = $CFG->fbk_scrid;
 
 $fb = facebook_newclass();
 
+$queryusers = "SELECT
+		us.id AS id,
+		fb.facebookid,
+		CONCAT(us.firstname,' ',us.lastname) AS name
+		FROM {facebook_user} AS fb
+		RIGHT JOIN {user} AS us ON (us.id = fb.moodleid AND fb.status = ?)
+		WHERE fb.facebookid IS NOT NULL
+		GROUP BY fb.facebookid, us.id";
+
+$queryassignments = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
+		us.id AS userid,
+		a.id AS assignid,
+		a.duedate AS duedate,
+		c.id AS courseid,
+		c.fullname AS coursename,
+		fb.facebookid,
+		CONCAT(us.firstname,' ',us.lastname) AS name
+		FROM {assign} AS a
+		INNER JOIN {course} AS c ON (a.course = c.id)
+		INNER JOIN {enrol} AS e ON (c.id = e.courseid)
+		INNER JOIN {user_enrolments} AS ue ON (e.id = ue.enrolid)
+		INNER JOIN {user} AS us ON (us.id = ue.userid)
+
+		INNER JOIN {facebook_user} AS fb ON (fb.moodleid = us.id AND fb.status = ?)
+		WHERE a.duedate > ?
+		AND fb.facebookid IS NOT NULL
+
+		GROUP BY us.id, a.id, c.id
+		ORDER BY us.id";
+
+$querysubmissions = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
+		us.id AS userid,
+		a.id AS assignid,
+		a.duedate AS duedate,
+		c.id AS courseid,
+		c.fullname AS coursename,
+		fb.facebookid,
+		CONCAT(us.firstname,' ',us.lastname) AS name
+		FROM {assign_submission} as asub
+		INNER JOIN {assign} AS a ON (asub.assignment = a.id)
+		INNER JOIN {course} AS c ON (a.course = c.id)
+		INNER JOIN {enrol} AS e ON (c.id = e.courseid)
+		INNER JOIN {user_enrolments} AS ue ON (e.id = ue.enrolid)
+		INNER JOIN {user} AS us ON (us.id = ue.userid)
+
+		INNER JOIN {facebook_user} AS fb ON (fb.moodleid = us.id AND fb.status = ?)
+		WHERE a.duedate > ?
+		AND fb.facebookid IS NOT NULL
+		AND asub.status = ?
+
+		GROUP BY us.id, a.id, c.id
+		ORDER BY us.id";
+
