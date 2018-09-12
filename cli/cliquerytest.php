@@ -54,14 +54,11 @@ use Facebook\Request;
  */
 
 
-mtrace("lalaland");
 mtrace("Searching for new notifications");
 mtrace("Starting at ".date("F j, Y, G:i:s"));
-
+echo '\n';
 $initialtime = time();
 $notifications = 0;
-
-var_dump($initialtime);
 
 $appid = $CFG->fbk_appid;
 $secretid = $CFG->fbk_scrid;
@@ -90,6 +87,8 @@ $data = array(
 
 foreach ($myid as $users){
 $fb->setDefaultAccessToken($appid.'|'.$secretid);
-if (facebook_handleexceptions($fb, $users, $data)){
+if ($lala = facebook_handleexceptions($fb, $users, $data)){
+	echo '\n';
+	var_dump($lala);
 	mtrace(" Notifications sent to user with facebook ".$users->facebookid." - ".$users->name."\n");
 }}
