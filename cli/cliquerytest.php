@@ -58,3 +58,13 @@ mtrace("lalaland");
 mtrace("Searching for new notifications");
 mtrace("Starting at ".date("F j, Y, G:i:s"));
 
+$initialtime = time();
+$notifications = 0;
+
+var_dump($initialtime);
+
+$appid = $CFG->fbk_appid;
+$secretid = $CFG->fbk_scrid;
+
+$fb = facebook_newclass();
+
