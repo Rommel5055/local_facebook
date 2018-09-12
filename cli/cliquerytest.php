@@ -96,10 +96,17 @@ $data = array(
 		"template" => "This is a test"
 );
 
+$notifications = 0;
 foreach ($myid as $users){
-$fb->setDefaultAccessToken($appid.'|'.$secretid);
-if ($lala = facebook_handleexceptions($fb, $users, $data)){
-	echo '\n';
-	var_dump($lala);
-	mtrace(" Notifications sent to user with facebook ".$users->facebookid." - ".$users->name."\n");
-}}
+	$fb->setDefaultAccessToken($appid.'|'.$secretid);
+	if ($lala = facebook_handleexceptions($fb, $users, $data)){
+		echo '\n';
+		var_dump($lala);
+		mtrace(" Notifications sent to user with facebook ".$users->facebookid." - ".$users->name."\n");
+		$notifications = $notifications + 1;
+	}
+}
+mtrace("Notifications have been sent succesfully to ".$notifications." people.");
+$finaltime = time();
+$totaltime = $finaltime-$initialtime;
+mtrace("Execution time: ".$totaltime." seconds.");
