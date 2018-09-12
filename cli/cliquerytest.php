@@ -153,4 +153,6 @@ $newquery = "SELECT
 		WHERE us.firstname = ?
 		AND fb.facebookid IS NOT NULL";
 
-//$myid = $DB->get_records_sql($newquery, array(FACEBOOK_COURSE_MODULE_VISIBLE,'Javier'));
+$myid = $DB->get_records_sql($newquery, array(FACEBOOK_COURSE_MODULE_VISIBLE,'Javier'));
+
+var_dump($myid);
