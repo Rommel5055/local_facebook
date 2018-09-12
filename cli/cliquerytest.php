@@ -39,4 +39,22 @@ use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequire;
 use Facebook\Facebook;
 use Facebook\Request;
-mtrace("wtf");
+
+/*
+ if($options['help']) {
+ $help =
+ "Send facebook notifications when a course have some news.
+ Options:
+ -h, --help            Print out this help
+ Example:
+ \$sudo /usr/bin/php /local/facebook/cli/notifications.php";
+ echo $help;
+ die();
+ }
+ */
+
+
+mtrace("lalaland");
+mtrace("Searching for new notifications");
+mtrace("Starting at ".date("F j, Y, G:i:s"));
+
