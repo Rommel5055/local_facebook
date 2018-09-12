@@ -87,7 +87,7 @@ $queryusers = "SELECT
 		GROUP BY fb.facebookid, us.id";
 
 $queryassignments = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
-		us.id AS userid,
+		us.id AS id,
 		a.id AS assignid,
 		a.duedate AS duedate,
 		c.id AS courseid,
@@ -108,7 +108,7 @@ $queryassignments = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
 		ORDER BY us.id";
 
 $querysubmissions = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
-		us.id AS userid,
+		us.id AS id,
 		a.id AS assignid,
 		a.duedate AS duedate,
 		c.id AS courseid,
@@ -161,11 +161,11 @@ foreach($arraynewassignments as $assignments){
  
 $countnotsubmittedusers = array();
 foreach($notsubmitted as $user){
-	if (isset($countnotsubmittedusers[$user->userid])){
-		$countnotsubmittedusers[$user->userid] = $countnotsubmittedusers[$user->userid] + 1;
+	if (isset($countnotsubmittedusers[$user->id])){
+		$countnotsubmittedusers[$user->id] = $countnotsubmittedusers[$user->id] + 1;
 	}
 	else{
-		$countnotsubmittedusers[$user->userid] = 1;
+		$countnotsubmittedusers[$user->id] = 1;
 	}
 }
 

@@ -86,7 +86,7 @@ $newquery = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
 		GROUP BY us.id, a.id, c.id
 		ORDER BY us.id";
 
-$myid = $DB->get_records_sql($newquery, array(FACEBOOK_COURSE_MODULE_VISIBLE, $initialtime));
+$myid = $DB->get_records_sql($newquery, array(FACEBOOK_LINKED, $initialtime));
 
 var_dump($myid);
 

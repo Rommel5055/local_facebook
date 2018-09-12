@@ -586,7 +586,6 @@ function facebook_handleexceptions($fb, $user, $data){
 	
 	try {
 		$response = $fb->post('/'.$user->facebookid.'/notifications', $data);
-		var_dump($data);
 		return $response->getDecodedBody();
 	} catch (Exception $e) {
 		$exception = $e->getMessage();
