@@ -66,7 +66,7 @@ $secretid = $CFG->fbk_scrid;
 $fb = facebook_newclass();
 
 $newquery = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
-		us.id AS userid,
+		us.id AS id,
 		a.id AS assignid,
 		a.duedate AS duedate,
 		c.id AS courseid,
