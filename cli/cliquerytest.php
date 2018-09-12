@@ -40,14 +40,6 @@ use Facebook\FacebookRequire;
 use Facebook\Facebook;
 use Facebook\Request;
 
-list($options, $unrecognized) = cli_get_params(
-		array('help'=>false),
-		array('h'=>'help')
-		);
-if($unrecognized) {
-	$unrecognized = implode("\n  ", $unrecognized);
-	cli_error(get_string('cliunknowoption', 'admin', $unrecognized));
-}
 /*
  if($options['help']) {
  $help =
@@ -62,7 +54,6 @@ if($unrecognized) {
  */
 
 
-cli_heading('Facebook notifications');
 mtrace("lalaland");
 mtrace("Searching for new notifications");
 mtrace("Starting at ".date("F j, Y, G:i:s"));
