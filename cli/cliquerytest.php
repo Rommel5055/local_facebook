@@ -136,5 +136,21 @@ $paramsubmission = array(
 		"submitted"
 );
 
+$arraynewassignments = array();
+$arraysubmissions = array();
+
+echo "\n";
+var_dump(array_merge($paramsubmission, $paramsusers));
+echo "\n";
+echo "lalala";
+
+$newquery = "SELECT 
+		fb.facebookid,
+		CONCAT(us.firstname,' ',us.lastname) AS name
+		FROM {user} AS us 
+
+		INNER JOIN {facebook_user} AS fb ON (fb.moodleid = us.id AND fb.status = ?)
+		WHERE us.firstname = ?
+		AND fb.facebookid IS NOT NULL";
 
 //$myid = $DB->get_records_sql($newquery, array(FACEBOOK_COURSE_MODULE_VISIBLE,'Javier'));
