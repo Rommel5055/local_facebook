@@ -63,7 +63,7 @@ if($unrecognized) {
 
 
 cli_heading('Facebook notifications');
-
+mtrace("lalaland");
 mtrace("Searching for new notifications");
 mtrace("Starting at ".date("F j, Y, G:i:s"));
 
