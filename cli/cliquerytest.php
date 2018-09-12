@@ -121,3 +121,20 @@ $querysubmissions = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
 		GROUP BY us.id, a.id, c.id
 		ORDER BY us.id";
 
+$paramsusers = array(
+		FACEBOOK_LINKED
+);
+$paramsassignment = array(
+		MODULE_ASSIGN,
+		FACEBOOK_COURSE_MODULE_VISIBLE,
+		$initialtime
+);
+$paramsubmission = array(
+		MODULE_ASSIGN,
+		FACEBOOK_COURSE_MODULE_VISIBLE,
+		$initialtime,
+		"submitted"
+);
+
+
+//$myid = $DB->get_records_sql($newquery, array(FACEBOOK_COURSE_MODULE_VISIBLE,'Javier'));
