@@ -149,7 +149,7 @@ $arraynewassignments = array();
 $arraysubmissions = array();
 
 echo "\n";
-var_dump(array_merge($paramsassignment, $paramsusers));
+var_dump(array_merge($paramsubmission, $paramsusers));
 echo "\n";
 
 $newquery = "SELECT 
