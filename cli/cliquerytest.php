@@ -83,8 +83,8 @@ $myid = $DB->get_records_sql($newquery, array(FACEBOOK_COURSE_MODULE_VISIBLE,'Ja
 var_dump($myid);
 
 $data = array(
-		"link" => "",
-		"message" => "",
+		"link" => "lala",
+		"message" => "Le test",
 		"template" => "This is a test"
 );
 
