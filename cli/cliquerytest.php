@@ -65,17 +65,28 @@ $secretid = $CFG->fbk_scrid;
 
 $fb = facebook_newclass();
 
-$newquery = "SELECT 
+$newquery = "SELECT CONCAT(us.id,'.',a.id) AS userassign,
+		us.id AS userid,
+		a.id AS assignid,
+		a.duedate AS duedate,
+		c.id AS courseid,
+		c.fullname AS coursename,
 		fb.facebookid,
 		CONCAT(us.firstname,' ',us.lastname) AS name
-		FROM {user} AS us 
+		FROM {assign} AS a
+		INNER JOIN {course} AS c ON (a.course = c.id)
+		INNER JOIN {enrol} AS e ON (c.id = e.courseid)
+		INNER JOIN {user_enrolments} AS ue ON (e.id = ue.enrolid)
+		INNER JOIN {user} AS us ON (us.id = ue.userid)
 
 		INNER JOIN {facebook_user} AS fb ON (fb.moodleid = us.id AND fb.status = ?)
-		WHERE us.firstname = ?
-		AND us.lastname = ?
-		AND fb.facebookid IS NOT NULL";
+		WHERE a.duedate > ?
+		AND fb.facebookid IS NOT NULL
+		
+		GROUP BY us.id, a.id, c.id
+		ORDER BY us.id";
 
-$myid = $DB->get_records_sql($newquery, array(FACEBOOK_COURSE_MODULE_VISIBLE,'Javier', 'Gonzalez'));
+$myid = $DB->get_records_sql($newquery, array(FACEBOOK_COURSE_MODULE_VISIBLE, $initialtime));
 
 var_dump($myid);
 
@@ -85,10 +96,3 @@ $data = array(
 		"template" => "This is a test"
 );
 
-foreach ($myid as $users){
-$fb->setDefaultAccessToken($appid.'|'.$secretid);
-if ($lala = facebook_handleexceptions($fb, $users, $data)){
-	echo '\n';
-	var_dump($lala);
-	mtrace(" Notifications sent to user with facebook ".$users->facebookid." - ".$users->name."\n");
-}}
